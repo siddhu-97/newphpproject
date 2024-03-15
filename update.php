@@ -6,12 +6,12 @@ include 'connection.php';
 if(isset($_POST['id'])){
     $id= $_POST['id'];
      $name= $_POST['sname'];
-     $email= $_POST['email'];
-     $password= $_POST['password'];
-     $contact= $_POST['contact'];
-     $comment= $_POST['comment']; 
-     $image=$_FILES['uploadfile']['name'];
-     $tmp_name=$_FILES['uploadfile']['tmp_name'];
+     $email= $_POST['semail'];
+     $password= $_POST['spassword'];
+     $contact= $_POST['scontact'];
+     $comment= $_POST['scomment']; 
+     $image=$_FILES['suploadfile']['name'];
+     $tmp_name=$_FILES['suploadfile']['tmp_name'];
      print_r($tmp_name);
     if(move_uploaded_file($tmp_name,"upload/".$image))
       {

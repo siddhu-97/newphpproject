@@ -5,10 +5,13 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">  
   <title>my form</title>
+
+  
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <style>
     .error{
       color: red;
@@ -70,8 +73,7 @@
       </div>
     </form>
   </div> 
-    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   
  <script src="validation.js"></script>
@@ -89,18 +91,8 @@
   </tbody>
   </table>
 </div>
-<!-- <div id="error-message"></div>
-  <div id="success-message"></div>
-  <div id="modal">
-    <div id="modal-form">
-      <h2>Edit Form</h2>
-      <table cellpadding="10px" width="100%">
-      </table>
-      <div id="close-btn">X</div>
-    </div>
-  </div> -->
 
-  <!-- Modal -->
+  <!-- Modal for edit the form-->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -116,12 +108,38 @@
           </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close_modal">Close</button>
+        <button type="submit" name="update" id="updateit" class="btn btn-primary">Save Changes</button>
       </div>
     </div>
   </div>
 </div>
+   <!-- modal for insert the new record of student -->
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">your form is ready to update</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div> 
+        <div class="modal-body" id="modal">
+          <div class="container"  style= "border:2px solid blue;" >
+            <form  method="post" id="modal_page"  enctype="multipart/form-data" > 
+                
+            </form>
+            </div>
+        </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" name="update" id="updateit" class="btn btn-primary">Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+
+
+
  
 <script>
   // fetching the data from database 
@@ -150,7 +168,7 @@
 $(document).ready(function() {
 $("#table").on("click","#delete",function(e){
   e.preventDefault();
-    if(confirm("Are You Sure")){
+    if(confirm("your data is deleting, please confirm!")){
         var id=$(this).data("id");
         // alert(id);
         $.ajax({
@@ -170,22 +188,23 @@ $("#table").on("click","#delete",function(e){
                 alert("not deleted");
               }
             }
-          
         })
     }
     else{
-        $("#table tbody").html("data not deleted")
+      Swal.fire("deletion cancelled");
         
     }
 
 });
 });
+// open the modal box to edit the student data
 $(document).ready(function() {
  //Show Modal Box
  $(document).on("click","#edit_page", function(e){
-  e.preventDefault();
+ 
     // alert("hiii siddhu");
-    if(confirm("Are You Sure, you want to edit!")){
+    // if(confirm("Are You Sure, you want to edit!")){
+       e.preventDefault();
       $("#modal").show();
       var studentId = $(this).data("eid");
       $.ajax({
@@ -197,7 +216,10 @@ $(document).ready(function() {
         
         }
       })
-    }
+    // }
+    // else{
+    //   Swal.fire("edition cancelled");
+    // }
     });
 
     //Hide Modal Box
@@ -213,26 +235,49 @@ $(document).on("click","#updateit", function(e){
   e.preventDefault();
   var form = $('#modal_page')[0];
   var formData = new FormData(form);
- 
-        $.ajax({
-          url: "update.php",
-          type : "POST",
-          processData: false,
-           contentType: false,
-           data: formData,
-          success: function(response) {
-            if(response)
+
+    var sname = $("#sname").val();
+    var simage = $("#suploadfile").val();
+    var semail = $("#semail").val();
+    var spassword = $("#spassword").val();
+    var scontact = $("#scontact").val();
+
+      if ($('#modal_page').valid()) 
+      {
+                if(sname == "" || simage == "" || semail == "" || spassword == "" || scontact == "")
+                {
+                  alert("all fields are required");
+                }
+            else
             {
-              alert("data updated");
-                $("#exampleModal, .modal-header").hide();
-              //  $("#modal").hide();
-              // loadTable();
-            }
-            else{
-              alert("response is not working");
-            }      
+    
+                $.ajax({
+                  url: "update.php",
+                  type : "POST",
+                  processData: false,
+                  contentType: false,
+                  data: formData,
+                  success: function(response)
+                  {
+                    if(response)
+                        {
+                          alert("data updated");
+                          // location.reload();
+                            // $("#exampleModal").hide();
+                          $('#close_modal').click();
+
+                          // loadTable();
+                        }
+                      
+                      else{
+                        alert("response is not working");
+                      }      
+                  }
+
+                })
           }
-        })
+       }
+     
       });
 
 

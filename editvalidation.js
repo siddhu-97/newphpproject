@@ -36,28 +36,27 @@ $(document).ready(function(){
       "Please enter a contact number with numeric characters only."
     );
     
-    
-       $("#edit_form").validate({
+       $("#modal_page").validate({
            rules:{
-            name:{
+            sname:{
                 alphaOnly:true,
                 required: true
             },
-            // uploadfile:{
-            //     // required: true,
+             suploadfile:{
+               required: true,
                 
-            // },
-            email:{
+             },
+            semail:{
                 emailAddress:true,
                 required: true,
                 
             },
-            password:{
+            spassword:{
                 required: true,
                 minlength: true,
                  passwordValidation:true
             },
-            contact:{
+            scontact:{
                 required: true,
                 maxlength: 10,
                 minlength: 10,
@@ -67,28 +66,28 @@ $(document).ready(function(){
              
            },
            messages:{
-            name:{
+            sname:{
                 required: "*name is must"
             },
-            uploadfile:{
-                // required: "*image is must"
+            suploadfile:{
+                 required: "*image is must"
                
             },
-            email:{
+            semail:{
                 required: "*please enter the email"
                 
             },
-            password:{
+            spassword:{
                 required: "*password is must",
                 minlength: "*password must be greater than 6 characters"
             },
-            contact:{
+            scontact:{
                 required: "*contact is must",
                 maxlength:"*number should only in 10 digits",
                 minlength:"*number should only in 10 digits"
                
             },
-            comment:{
+            scomment:{
                 required:"this field is optional"
             },
             

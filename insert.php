@@ -21,10 +21,14 @@ if(isset($_POST['name']))
     
         if (move_uploaded_file($tempname, $folder))
         {
-                $query= "INSERT INTO `student_table`( `name`, `email`, `password`, `contact`, `comment`,`image`,`status`)
-                VALUES ('$name','$email','$password_hash','$contact','$comment','$filename','active')";
+                $query= "INSERT INTO `student_table`( `name`, `email`, `password`, `contact`, `comment`,`image`)
+                VALUES ('$name','$email','$password_hash','$contact','$comment','$filename')";
 
-                 $value= mysqli_query($conn,$query);      
+                 $value= mysqli_query($conn,$query);     
+                 if($value)
+                 {
+                  header("location:list.php");
+                 } 
                  
     
         }

@@ -56,7 +56,7 @@ $.validator.addMethod(
         password:{
             required: true,
             minlength: true,
-             passwordValidation:true
+            passwordValidation:true
         },
         contact:{
             required: true,
@@ -97,11 +97,12 @@ $.validator.addMethod(
    });
    
    $("#submitId").click(function (e) { 
+    e.preventDefault();
     // To take all the form data to the variable formData...
       var form = $('#myform')[0];
 
     var formData = new FormData(form);
-     e.preventDefault();
+     
      
    // Append image files to the formData object
    // formData.append('uploadfile', $('#uploadfile')[0].files[0]);
@@ -128,8 +129,9 @@ $.validator.addMethod(
          success: function(response){
               if(response) {
                 Swal.fire("Data Submitted Successfully");
-                  $('#submitId').text("data submitted");
-                       $('form')[0].reset();      
+                window.location.href = 'list.php';     
+                  // $('#submitId').text("data submitted");
+                      //  $('form')[0].reset(); 
               }
 
               
